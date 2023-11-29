@@ -25,7 +25,7 @@ spec:
       nodeSelector:
         node-role.kubernetes.io/pdns-master: "true"
       containers:
-      - image: pschiffe/pdns-mysql:alpine
+      - image: petrhung9/pdns-mysql:alpine
         imagePullPolicy: IfNotPresent
         name: pdns-master
         env:

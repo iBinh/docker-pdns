@@ -1,4 +1,4 @@
-FROM pschiffe/pdns-admin-base
+FROM petrhung9/pdns-admin-base
 
 RUN dnf -y --setopt=install_weak_deps=False install \
     nginx \

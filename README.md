@@ -6,19 +6,19 @@ The pdns-mysql and pdns-recursor images have also the `alpine` tag thanks to the
 
 All images are available on Docker Hub:
 
-https://hub.docker.com/r/pschiffe/pdns-mysql/
+https://hub.docker.com/r/petrhung9/pdns-mysql/
 
-https://hub.docker.com/r/pschiffe/pdns-recursor/
+https://hub.docker.com/r/petrhung9/pdns-recursor/
 
-https://hub.docker.com/r/pschiffe/pdns-admin-uwsgi/
+https://hub.docker.com/r/petrhung9/pdns-admin-uwsgi/
 
-https://hub.docker.com/r/pschiffe/pdns-admin-static/
+https://hub.docker.com/r/petrhung9/pdns-admin-static/
 
 ## pdns-mysql
 
-![Docker Image Size (tag)](https://img.shields.io/docker/image-size/pschiffe/pdns-mysql/latest?label=latest) ![Docker Image Size (tag)](https://img.shields.io/docker/image-size/pschiffe/pdns-mysql/alpine?label=alpine) ![Docker Pulls](https://img.shields.io/docker/pulls/pschiffe/pdns-mysql)
+![Docker Image Size (tag)](https://img.shields.io/docker/image-size/petrhung9/pdns-mysql/latest?label=latest) ![Docker Image Size (tag)](https://img.shields.io/docker/image-size/petrhung9/pdns-mysql/alpine?label=alpine) ![Docker Pulls](https://img.shields.io/docker/pulls/petrhung9/pdns-mysql)
 
-https://hub.docker.com/r/pschiffe/pdns-mysql/
+https://hub.docker.com/r/petrhung9/pdns-mysql/
 
 Docker image with [PowerDNS 4.x server](https://www.powerdns.com/) and mysql backend (without mysql server). For running, it needs external mysql server. Env vars for mysql configuration:
 ```
@@ -54,7 +54,7 @@ docker run -d -p 53:53 -p 53:53/udp --name pdns-master \
   -e PDNS_default_ttl=1500 \
   -e PDNS_allow_axfr_ips=172.5.0.21 \
   -e PDNS_only_notify=172.5.0.21 \
-  pschiffe/pdns-mysql
+  petrhung9/pdns-mysql
 ```
 
 Slave server with supermaster:
@@ -67,14 +67,14 @@ docker run -d -p 53:53 -p 53:53/udp --name pdns-slave \
   -e PDNS_disable_axfr=yes \
   -e PDNS_allow_notify_from=172.5.0.20 \
   -e SUPERMASTER_IPS=172.5.0.20 \
-  pschiffe/pdns-mysql
+  petrhung9/pdns-mysql
 ```
 
 ## pdns-recursor
 
-![Docker Image Size (tag)](https://img.shields.io/docker/image-size/pschiffe/pdns-recursor/latest?label=latest) ![Docker Image Size (tag)](https://img.shields.io/docker/image-size/pschiffe/pdns-recursor/alpine?label=alpine) ![Docker Pulls](https://img.shields.io/docker/pulls/pschiffe/pdns-recursor)
+![Docker Image Size (tag)](https://img.shields.io/docker/image-size/petrhung9/pdns-recursor/latest?label=latest) ![Docker Image Size (tag)](https://img.shields.io/docker/image-size/petrhung9/pdns-recursor/alpine?label=alpine) ![Docker Pulls](https://img.shields.io/docker/pulls/petrhung9/pdns-recursor)
 
-https://hub.docker.com/r/pschiffe/pdns-recursor/
+https://hub.docker.com/r/petrhung9/pdns-recursor/
 
 Docker image with [PowerDNS 4.x recursor](https://www.powerdns.com/).
 
@@ -91,14 +91,14 @@ docker run -d -p 53:53 -p 53:53/udp --name pdns-recursor \
   -e PDNS_webserver=yes \
   -e PDNS_webserver_address=0.0.0.0 \
   -e PDNS_webserver_password=secret2 \
-  pschiffe/pdns-recursor
+  petrhung9/pdns-recursor
 ```
 
 ## pdns-admin-uwsgi
 
-![Docker Image Size (tag)](https://img.shields.io/docker/image-size/pschiffe/pdns-admin-uwsgi/latest?label=latest) ![Docker Pulls](https://img.shields.io/docker/pulls/pschiffe/pdns-admin-uwsgi)
+![Docker Image Size (tag)](https://img.shields.io/docker/image-size/petrhung9/pdns-admin-uwsgi/latest?label=latest) ![Docker Pulls](https://img.shields.io/docker/pulls/petrhung9/pdns-admin-uwsgi)
 
-https://hub.docker.com/r/pschiffe/pdns-admin-uwsgi/
+https://hub.docker.com/r/petrhung9/pdns-admin-uwsgi/
 
 Docker image with backend of [PowerDNS Admin](https://github.com/PowerDNS-Admin/PowerDNS-Admin) web app, written in Flask, for managing PowerDNS servers. This image contains the python part of the app running under uWSGI. It needs external mysql server. Env vars for mysql configuration:
 ```
@@ -155,14 +155,14 @@ When linked with pdns-mysql from this repo and with LDAP auth:
 docker run -d --name pdns-admin-uwsgi \
   --link mariadb:mysql --link pdns-master:pdns \
   -v pdns-admin-upload:/opt/powerdns-admin/upload \
-  pschiffe/pdns-admin-uwsgi
+  petrhung9/pdns-admin-uwsgi
 ```
 
 ## pdns-admin-static
 
-![Docker Image Size (tag)](https://img.shields.io/docker/image-size/pschiffe/pdns-admin-static/latest?label=latest) ![Docker Pulls](https://img.shields.io/docker/pulls/pschiffe/pdns-admin-static)
+![Docker Image Size (tag)](https://img.shields.io/docker/image-size/petrhung9/pdns-admin-static/latest?label=latest) ![Docker Pulls](https://img.shields.io/docker/pulls/petrhung9/pdns-admin-static)
 
-https://hub.docker.com/r/pschiffe/pdns-admin-static/
+https://hub.docker.com/r/petrhung9/pdns-admin-static/
 
 Fronted image with nginx and static files for [PowerDNS Admin](https://github.com/PowerDNS-Admin/PowerDNS-Admin). Exposes port 80 for connections, expects uWSGI backend image under `pdns-admin-uwsgi` alias.
 
@@ -171,7 +171,7 @@ Fronted image with nginx and static files for [PowerDNS Admin](https://github.co
 ```
 docker run -d -p 8080:80 --name pdns-admin-static \
   --link pdns-admin-uwsgi:pdns-admin-uwsgi \
-  pschiffe/pdns-admin-static
+  petrhung9/pdns-admin-static
 ```
 
 ## ansible-playbook.yml

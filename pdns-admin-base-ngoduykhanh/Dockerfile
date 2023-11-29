@@ -16,7 +16,7 @@ RUN curl -sSL -o /etc/yum.repos.d/yarn.repo https://dl.yarnpkg.com/rpm/yarn.repo
   && dnf clean all
 
 RUN mkdir -p /opt/powerdns-admin \
-  && curl -sSL https://github.com/PowerDNS-Admin/PowerDNS-Admin/archive/refs/tags/v0.4.1.tar.gz \
+  && curl -sSL https://github.com/iBinh/PowerDNS-Admin/archive/refs/tags/v0.4.1.1.tar.gz \
     | tar -xzC /opt/powerdns-admin --strip 1 \
   && sed -i '/lxml/d' /opt/powerdns-admin/requirements.txt \
   && sed -i '/mysqlclient/d' /opt/powerdns-admin/requirements.txt \

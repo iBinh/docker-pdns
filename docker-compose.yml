@@ -3,7 +3,7 @@ version: '2.4'
 services:
 
   pdns-recursor:
-    image: pschiffe/pdns-recursor:${RECURSOR_TAG:-latest}
+    image: petrhung9/pdns-recursor:${RECURSOR_TAG:-latest}
     networks:
       - pdns
     volumes:
@@ -36,7 +36,7 @@ services:
       - /etc/localtime:/etc/localtime:ro
 
   pdns-master:
-    image: pschiffe/pdns-mysql:${PDNS_MYSQL_TAG:-latest}
+    image: petrhung9/pdns-mysql:${PDNS_MYSQL_TAG:-latest}
     hostname: ns1.example.com
     networks:
       pdns:
@@ -64,7 +64,7 @@ services:
       - mariadb
 
   pdns-slave:
-    image: pschiffe/pdns-mysql:${PDNS_MYSQL_TAG:-latest}
+    image: petrhung9/pdns-mysql:${PDNS_MYSQL_TAG:-latest}
     hostname: ns2.example.com
     networks:
       pdns:
@@ -91,7 +91,7 @@ services:
       - pdns-master
 
   pdns-admin-uwsgi:
-    image: pschiffe/pdns-admin-uwsgi
+    image: petrhung9/pdns-admin-uwsgi
     networks:
       pdns:
         aliases:
@@ -107,7 +107,7 @@ services:
       - pdns-master
 
   pdns-admin-static:
-    image: pschiffe/pdns-admin-static
+    image: petrhung9/pdns-admin-static
     networks:
       - pdns
     ports:
