@@ -1,10 +1,6 @@
 FROM petrhung9/pdns-admin-base
 
-RUN dnf -y --setopt=install_weak_deps=False install \
-    mariadb \
-    uwsgi-plugin-python3 \
-  && dnf clean all
-
+RUN apt update && apt install -y mariadb-server uwsgi-plugin-python3
 EXPOSE 9494
 
 COPY docker-entrypoint.sh /
@@ -13,4 +9,4 @@ RUN chown uwsgi: /etc/uwsgi.ini
 
 ENTRYPOINT [ "/docker-entrypoint.sh" ]
 
-CMD [ "/usr/sbin/uwsgi", "--ini", "/etc/uwsgi.ini" ]
+CMD [ "uwsgi", "--ini", "/etc/uwsgi.ini" ]

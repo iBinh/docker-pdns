@@ -1,8 +1,7 @@
 FROM petrhung9/pdns-admin-base
 
-RUN dnf -y --setopt=install_weak_deps=False install \
-    nginx \
-  && dnf clean all
+
+RUN apt update && apt install -y nginx
 
 EXPOSE 80
 
