@@ -1,6 +1,7 @@
 FROM petrhung9/pdns-admin-base
 
 RUN apt update && apt install -y mariadb-server uwsgi-plugin-python3
+RUN pip3 install mysqlclient
 EXPOSE 9494
 
 COPY docker-entrypoint.sh /

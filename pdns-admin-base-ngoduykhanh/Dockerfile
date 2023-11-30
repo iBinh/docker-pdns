@@ -14,7 +14,6 @@ RUN apt-get update && apt-get install -y \
     libmariadb-dev \
     libssl-dev \
     libffi-dev \
-    mysqlclient \
     pkg-config \
     libxml2-dev \
     libxmlsec1-dev \
