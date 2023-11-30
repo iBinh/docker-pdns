@@ -26,7 +26,7 @@ RUN curl -sL https://deb.nodesource.com/setup_18.x | bash - \
 RUN npm install -g yarn
 
 RUN mkdir -p /opt/powerdns-admin \
-    && curl -sSL https://github.com/iBinh/PowerDNS-Admin/archive/refs/tags/v0.4.1.4.tar.gz \
+    && curl -sSL https://github.com/iBinh/PowerDNS-Admin/archive/refs/tags/v0.4.1.5.tar.gz \
     | tar -xzC /opt/powerdns-admin --strip 1 \
     && sed -i '/lxml/d' /opt/powerdns-admin/requirements.txt \
     && sed -i '/mysqlclient/d' /opt/powerdns-admin/requirements.txt \
